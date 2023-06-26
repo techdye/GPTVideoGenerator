@@ -17,3 +17,9 @@ def ask(text, max_tokens=1000, model="text-davinci-003") -> str:
     )
 
     return response.choices[0]['text']
+
+
+def split(delimiters, string):
+    import re
+    regex_pattern = '|'.join(map(re.escape, delimiters))
+    return re.split(regex_pattern, string, 0)
