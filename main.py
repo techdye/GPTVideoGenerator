@@ -25,6 +25,20 @@ def main(number_words: int,
          delete_files: bool = True,
          warning_sources: bool = True,
          write_empty: bool = True):
+    """
+    This command allows you to create a video.\n
+    :param number_words: The number of words\n
+    :param language: The language code (fr, en...)\n
+    :param max_tokens: The maximum of tokens for the response\n
+    :param model: The model of GPT\n
+    :param width: The width of the video\n
+    :param height: The height of the video\n
+    :param fps: The number of fps\n
+    :param stop_create_files: It stops the program when it creates a new folder or file if it's true (RECOMMANDED)\n
+    :param delete_files: It deletes temp folders and files at the end if it's true\n
+    :param warning_sources: It asks you if the files are correctly done if it's true\n
+    :param write_empty: It writes in the file when it is empty if it's true\n
+    """
 
     ACTUAL_FOLDER = Path(__file__).parents[0]
 
@@ -135,7 +149,8 @@ def main(number_words: int,
         remove_temp=True
     )
 
-    shutil.rmtree(str(ACTUAL_FOLDER / "temp"))
+    if delete_files:
+        shutil.rmtree(str(ACTUAL_FOLDER / "temp"))
 
 
 if __name__ == "__main__":
